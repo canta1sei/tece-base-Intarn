@@ -1,0 +1,27 @@
+<?php
+//DB接続
+$dsn = "";
+	$user = "";
+	$password = "";
+	$pdo = new PDO($dsn,$user,$password);
+?>
+<html>
+<!---スレッド表示、作成画面--->
+<head>
+<title>トップ</title>
+</head>
+<body>
+<p>
+<?php
+	//スレッドを取得
+	$sql = "SELECT * FROM threads_test";
+	$results = $pdo -> query($sql);
+
+	foreach ($results as $row){
+		echo '<p><a href="thread.php?id='.$row['id'].'">'.$row["title"].'</a></p>';
+	}
+?>
+</p>
+<p><a href="thread_new.php">スレッド作成</a></p>
+</body>
+</html>
